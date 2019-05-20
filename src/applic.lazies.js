@@ -1,0 +1,1 @@
+import"./units/processing/applic.processing.js";console.info("applic-lazies:loaded","".concat(Date.now()-applic.created,"ms"));
