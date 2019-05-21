@@ -21,7 +21,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "/nightly/",
   "display": "fullscreen",
   "orientation": "landscape-primary",
   "theme_color": "#2C2F33",
