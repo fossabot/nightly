@@ -46,7 +46,50 @@ applic.dispatch("applic:changed")})}}]);return ApplicGraphic}())};/** !
    This code may only be used under the BSD style license found at https://contrast-tool.github.io/docs/LICENSE.md
    The complete set of authors may be found at https://contrast-tool.github.io/docs/AUTHORS.md
    The complete set of contributors may be found at https://contrast-tool.github.io/docs/CONTRIBUTORS.md
-   */var SECTION_STATE={};applic.section=new(/*#__PURE__*/function(){function _class3(){babelHelpers.classCallCheck(this,_class3)}return _class3}());applic.section.active=null;applic.section.get=function(_nonce){if("*"==_nonce){return applic.utils.arrayify(SECTION_STATE)}else if("~"==_nonce){return SECTION_STATE[applic.section.active]||!1}else{return SECTION_STATE[_nonce]||!1}};applic.section.select=function(_nonce){if(applic.section.active==_nonce||!SECTION_STATE[_nonce])return;if(SECTION_STATE[applic.section.active]){SECTION_STATE[applic.section.active].active=!1};SECTION_STATE[_nonce].active=!0;applic.section.active=_nonce;applic.utils.buffer(applic.dispatch.bind(null,"applic:changed"))};applic.section.remove=function(_nonce){if(!SECTION_STATE[_nonce])return;delete SECTION_STATE[_nonce];Promise.resolve().then(function(){if(applic.section.active==_nonce){var _first=applic.section.get("*")[0];if(_first)applic.section.select(_first.nonce)};applic.utils.buffer(applic.dispatch.bind(null,"applic:changed"))})};applic.section.create=function(){new function ApplicSection(){babelHelpers.classCallCheck(this,ApplicSection);this.nonce=applic.utils.nonce();this.name="Untitled";this.active=!1;SECTION_STATE[this.nonce]=this;applic.section.select(this.nonce);applic.utils.buffer(applic.dispatch.bind(null,"applic:changed"))}};new(/*#__PURE__*/function(){function _class4(){babelHelpers.classCallCheck(this,_class4);applic.graphic.__proto__.updated=this.updated.bind(this);applic.section.__proto__.updated=this.updated.bind(this);applic.utils.buffer(this.updated.bind(this));applic.on("applic:changed",this.updated.bind(this));console.debug("applic:ready","".concat(Date.now()-applic.created,"ms"))}babelHelpers.createClass(_class4,[{key:"updated",value:function updated(){this.sections=applic.section.get("*");this.graphics=applic.graphic.get("*");if(this._debug()){applic.dispatch("applic:updated",this);// console.debug('applic:updated')
-};}},{key:"_debug",value:function _debug(){if(1>this.sections.length){console.debug("applic:debug","'No collections'");applic.section.create();return!1};return!0}}]);return _class4}());applic.__proto__.newImport=function(_params){return new(/*#__PURE__*/function(){function _class5(){babelHelpers.classCallCheck(this,_class5);if(!_params.section)throw"Require section for import";this.graphic={};this.section=_params.section;œ;this.type=_params.type;// console.log('importer-created', _params)
-}babelHelpers.createClass(_class5,[{key:"add",value:function add(_blob){this.graphic[_blob.nonce]=applic.graphic.create({section:this.section,type:this.type,blob:_blob})}},{key:"update",value:function update(_blob){this.graphic[_blob.nonce].update({blob:_blob})}},{key:"resolved",value:function resolved(){// console.log('importer-resolved')
-}}]);return _class5}())};console.info("applic:loaded","".concat(Date.now()-applic.created,"ms"));
+   */var SECTION_STATE={};applic.section=new(/*#__PURE__*/function(){function _class3(){babelHelpers.classCallCheck(this,_class3)}return _class3}());applic.section.active=null;applic.section.get=function(_nonce){if("*"==_nonce){return applic.utils.arrayify(SECTION_STATE)}else if("~"==_nonce){return SECTION_STATE[applic.section.active]||!1}else{return SECTION_STATE[_nonce]||!1}};applic.section.select=function(_nonce){if(applic.section.active==_nonce||!SECTION_STATE[_nonce])return;if(SECTION_STATE[applic.section.active]){SECTION_STATE[applic.section.active].active=!1};SECTION_STATE[_nonce].active=!0;applic.section.active=_nonce;applic.utils.buffer(applic.dispatch.bind(null,"applic:changed"))};applic.section.remove=function(_nonce){if(!SECTION_STATE[_nonce])return;delete SECTION_STATE[_nonce];Promise.resolve().then(function(){if(applic.section.active==_nonce){var _first=applic.section.get("*")[0];if(_first)applic.section.select(_first.nonce)};applic.utils.buffer(applic.dispatch.bind(null,"applic:changed"))})};applic.section.create=function(){new function ApplicSection(){babelHelpers.classCallCheck(this,ApplicSection);this.nonce=applic.utils.nonce();this.name="Untitled";this.active=!1;SECTION_STATE[this.nonce]=this;applic.section.select(this.nonce);applic.utils.buffer(applic.dispatch.bind(null,"applic:changed"))}};new(/*#__PURE__*/function(){function _class4(){babelHelpers.classCallCheck(this,_class4)}// applic.graphic.__proto__.updated = this.updated.bind(this);
+// applic.section.__proto__.updated = this.updated.bind(this);
+// applic.utils.buffer(this.updated.bind(this));
+// applic.on('applic:changed', this.updated.bind(this));
+// console.debug('applic:ready', `${Date.now() - applic.created}ms`);
+// updated() {
+//   this.sections = applic.section.get('*');
+//   this.graphics = applic.graphic.get('*');
+//   if (this._debug()) {
+//     applic.dispatch('applic:updated', this);
+//     // console.debug('applic:updated')
+//   };
+// }
+// _debug() {
+//   if (1 > this.sections.length) {
+//     console.debug('applic:debug', `'No collections'`)
+//     applic.section.create(); return false;
+//   };
+//   return true;
+// }
+return _class4}());// applic.__proto__.newImport = (_params) => {
+//   return new class {
+//     constructor() {
+//       if (!_params.section) throw 'Require section for import';
+//       this.graphic = {};
+//       this.section = _params.section;œ
+//       this.type = _params.type;
+//       // console.log('importer-created', _params)
+//     }
+//     add(_blob) {
+//       this.graphic[_blob.nonce] = applic.graphic.create({
+//         section: this.section,
+//         type: this.type,
+//         blob: _blob
+//       })
+//     }
+//     update(_blob) {
+//       this.graphic[_blob.nonce].update({
+//         blob: _blob
+//       })
+//     }
+//     resolved() {
+//       // console.log('importer-resolved')
+//     }
+//   }
+// };
+console.info("applic:loaded","".concat(Date.now()-applic.created,"ms"));
