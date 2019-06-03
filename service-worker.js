@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["index.html","9c30f43bc7ad0cc6de35f0c62e70e1bb"],["source/applic.lazies.js","b1a320340cc92a197f26ddc9047a70a4"]];
+var precacheConfig = [["index.html","8db4ce51904bd1ac0a17917e5b13cdf2"],["manifest.json","8497ca8fa6b599725badce97da4baa1c"],["node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-ce.js","039cece33b43e3ae0215cdcd2ade8c6b"],["node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js","c73899f69a673e93653c018e4a2be04b"],["node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js","ed70043d6ffd397cd8a5785a91deedcc"],["node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd.js","0f94d1d1fa6eb56e54ceba65a10d5cab"],["node_modules/@webcomponents/webcomponentsjs/entrypoints/custom-elements-es5-adapter-index.js","5652c8f83533d62943792a7fe7a2e581"],["node_modules/@webcomponents/webcomponentsjs/entrypoints/webcomponents-bundle-index.js","8dd62a28e52d133ef1ecf044bc51f109"],["node_modules/@webcomponents/webcomponentsjs/entrypoints/webcomponents-ce-index.js","0867f0cb4caf5081f1e85da13c24528a"],["node_modules/@webcomponents/webcomponentsjs/entrypoints/webcomponents-sd-ce-index.js","5d9cd4fb5d341a0e2890edaa2cc8e226"],["node_modules/@webcomponents/webcomponentsjs/entrypoints/webcomponents-sd-ce-pf-index.js","4fa20d933ca980ef122fbad7528e56ca"],["node_modules/@webcomponents/webcomponentsjs/entrypoints/webcomponents-sd-index.js","d4e3a4413d567733a71057462763e36f"],["node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js","e044a63e034bf10304dad73138b8c74b"],["resources/icon/canary.144.png","5bfd2d2c23de48965d3e81f7dba77504"],["resources/icon/canary.180.png","3318b28aeb35e7f749f34cde3da64e20"],["resources/icon/canary.192.png","3318b28aeb35e7f749f34cde3da64e20"],["resources/icon/canary.48.png","8eed3b1b2f5d8f37f182bcc532971faf"],["resources/icon/canary.512.png","af9e85f8a2aef6fa3367fccd057bc0e3"],["resources/icon/canary.72.png","f56f584c6da6183066ba0e3f7586053f"],["resources/icon/canary.96.png","6c5c37171bd2587265cb06f7a2a11b29"],["resources/lang/localize-index.json","552df3cab4b6ae61f68d2a9046ed1b43"],["resources/lang/localize.de-NL.json","96bd24f74106069e8fbc5ca53fd33f6c"],["resources/lang/localize.en-NL.json","96bd24f74106069e8fbc5ca53fd33f6c"],["resources/web/dom.contours.svg","f3d0e29023df685c38c120160e0aedc3"],["resources/web/web.canary.png","6c5c37171bd2587265cb06f7a2a11b29"],["resources/web/web.card.png","c598be946b596d1efd43181ba802bb80"],["source/applic.lazies.js","b1a320340cc92a197f26ddc9047a70a4"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 
 
@@ -229,11 +229,11 @@ self.addEventListener('fetch', function (event) {
 
     // If shouldRespond is still false, check to see if this is a navigation
     // request, and if so, whether the URL matches navigateFallbackWhitelist.
-    var navigateFallback = 'index.html';
+    var navigateFallback = '/index.html';
     if (!shouldRespond &&
         navigateFallback &&
         (event.request.mode === 'navigate') &&
-        isPathWhitelisted(["\\/[^\\/\\.]*(\\?|$)"], event.request.url)) {
+        isPathWhitelisted(["^(?!.*\\.js$|\\/data\\/).*"], event.request.url)) {
       url = new URL(navigateFallback, self.location).toString();
       shouldRespond = urlsToCacheKeys.has(url);
     }
