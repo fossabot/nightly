@@ -24,6 +24,6 @@
   "start_url": "/nightly/",
   "display": "standalone",
   "orientation": "any",
-  "theme_color": "#2C2F3330",
+  "theme_color": "#2C2F33",
   "background_color": "#2C2F33"
 }
